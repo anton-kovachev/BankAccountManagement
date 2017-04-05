@@ -11,4 +11,4 @@ User List -> "Users"
 </br>
 Loged In User => "My Profile"
 </br>
-Bank Account => "Users -> Bank Account" (if admin)/ "My Profile -> Bank Account"
+Bank Account => "Users -> Bank Account" (if admin)/ "My Profile -> Bank Account"(if ordinary user)
