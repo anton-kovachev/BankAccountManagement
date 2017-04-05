@@ -10,7 +10,7 @@ using System.Text;
 
 namespace BankUserAccountManagmentDAL.Extensions
 {
-    public static class IQueryableExtensions
+    public static class UserIQueryableExtensions
     {
         public static IQueryable<UserProfileDTO> SelectUserProfileDTO(this IQueryable<User> Users)
         {
