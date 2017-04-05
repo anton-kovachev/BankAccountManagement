@@ -12,11 +12,11 @@ namespace BankUserAccountManagementApplication.Controllers
 {
     public class BaseController : Controller
     {
-        public BaseController(IBaseRepository baseRepositor, IHttpContextAccessor httpContextAccessor)
+        public BaseController(IBaseRepository baseRepository, IHttpContextAccessor httpContextAccessor)
         {
             if (httpContextAccessor.HttpContext.User != null && httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                baseRepositor.UserID = ClaimHelpers.GetUserIDClaimValue((ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity);
+                baseRepository.UserID = ClaimHelpers.GetUserIDClaimValue((ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity);
             }
         }
     }
