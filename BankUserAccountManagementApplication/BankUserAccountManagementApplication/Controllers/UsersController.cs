@@ -140,6 +140,7 @@ namespace BankUserAccountManagementApplication.Controllers
             }
             catch(Exception ex)
             {
+                ModelState.AddModelError(string.Empty, "Error!Sorry, something went wrong! Please retry the operation!");
                 return View(userForEditViewModel);
             }
             finally
