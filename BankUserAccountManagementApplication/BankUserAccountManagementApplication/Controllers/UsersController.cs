@@ -93,15 +93,16 @@ namespace BankUserAccountManagementApplication.Controllers
                     return RedirectToAction("Index", "Users");
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                ModelState.AddModelError(string.Empty, "Error!Sorry, something went wrong! Please retry the operation!");
+                return View(userForRegistrationViewModel);
             }
             finally
             {
             }
 
-            return View();
+            return View(userForRegistrationViewModel);
         }
 
         // GET: Users/Edit/5
