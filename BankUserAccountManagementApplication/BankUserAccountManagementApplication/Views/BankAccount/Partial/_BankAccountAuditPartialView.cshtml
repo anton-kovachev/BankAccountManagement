@@ -1,0 +1,62 @@
+@model IEnumerable<BankUserAccountManagementApplication.Models.BankAccountModels.BankAccountAuditViewModel>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PreviousAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CurrentAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ChangeAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BankAccountOperation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TranserBankAccountID)
+                </th> 
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedByUser)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PreviousAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CurrentAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChangeAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BankAccountOperation)
+                    </td>
+                    @if(!item.TranserBankAccountID.HasValue) {
+                        <td></td>
+                    }
+                    else {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TranserBankAccountID)
+                    </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedByUser.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                </tr>
+        }
+        </tbody>
+    </table>

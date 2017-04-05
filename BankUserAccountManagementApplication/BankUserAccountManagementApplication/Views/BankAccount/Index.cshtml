@@ -1,0 +1,71 @@
+@model BankUserAccountManagementApplication.Models.BankAccountModels.BankAccountViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Account Management</h2>
+
+<div>
+    <h4>Bank Account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Owner.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedByUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedByUser.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedByUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedByUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd> 
+    </dl>
+</div>
+
+<div class="border-solid-grey">
+    <p><h3>Account History</h3></p>
+    @Html.Partial("Partial/_BankAccountAuditPartialView", Model.BankAccountAuditList)
+</div>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><a asp-area="" asp-controller="BankAccount" asp-action="Deposit" asp-route-id="@Model.ID">Deposit</a></li>
+        <li><a asp-area="" asp-controller="BankAccount" asp-action="Withdraw" asp-route-id="@Model.ID">Withdraw</a></li>
+        <li><a asp-area="" asp-controller="BankAccount" asp-action="Transfer" asp-route-id="@Model.ID">Transfer</a></li>
+    </ul>
+</div>

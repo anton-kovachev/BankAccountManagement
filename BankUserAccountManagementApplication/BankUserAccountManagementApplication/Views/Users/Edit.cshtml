@@ -1,0 +1,134 @@
+@using BankUserAccountManagementApplication.Extensions
+@model BankUserAccountManagementApplication.Models.UserProfileModels.UserEditDetailedViewModel
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-controller="Users" asp-action="Edit" method="post">
+    <div class="form-horizontal">
+        <h4>Edit User</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.HiddenFor(model => model.ID)
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.Password)
+        @Html.HiddenFor(model => model.ConfirmPassword)
+        <div class="form-group">
+            <label asp-for="Address" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PassportNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PassportNumber" class="form-control" />
+                <span asp-validation-for="PassportNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+
+        @if (User.IsUserAdmin())
+        {
+            <div class="form-group">
+                <label asp-for="IsAdmin" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(m => m.IsAdmin);
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="row" style="border-top: 1px solid black; border-bottom: 1px solid black;" >
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+               <b>Account:</b>
+            </div>
+
+            <div class="col-md-2">
+                <a asp-controller="BankAccount" asp-action="Index" asp-route-id="@Model.BankAccountID">Bank Account</a> 
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row font-size-15">
+            <div class="col-md-4">@Html.DisplayNameFor(model => model.ModifiedBy)</div>
+            <div class="col-md-4">@Html.DisplayFor(model => model.ModifiedBy)</div>
+        </div>
+        <div class="row font-size-15">
+            <div class="col-md-4">@Html.DisplayNameFor(model => model.ModifiedDate)</div>
+            <div class="col-md-4">@Html.DisplayFor(model => model.ModifiedDate)</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row font-size-15">
+            <div class="col-md-4">@Html.DisplayNameFor(model => model.CreatedByUser)</div>
+            <div class="col-md-4">@Html.DisplayFor(model => model.CreatedByUser)</div>
+        </div>
+        <div class="row font-size-15">
+            <div class="col-md-4">@Html.DisplayNameFor(model => model.CreatedDate)</div>
+            <div class="col-md-4">@Html.DisplayFor(model => model.CreatedDate)</div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

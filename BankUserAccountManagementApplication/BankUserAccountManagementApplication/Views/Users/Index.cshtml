@@ -1,0 +1,24 @@
+@model BankUserAccountManagementApplication.Models.BankClientsOverviewViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Users</h2>
+
+<div style="border-bottom: 1px solid black">
+    <div class="row">
+        <div class="col-md-3"><h3>@Html.DisplayNameFor(model => model.NumberOfClients) : </h3></div>
+        <div class="col-md-3"><h3>@Html.DisplayFor(model => model.NumberOfClients)</h3></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"><h3>@Html.DisplayNameFor(model => model.TotalAmountOfMoneyDeposit) : </h3></div>
+        <div class="col-md-3"><h3>@Html.DisplayFor(model => model.TotalAmountOfMoneyDeposit) $</h3></div>
+    </div>
+</div>
+</br>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@Html.Partial("Partial/_UserProfileListPartivalVIew", Model.BankClients)
